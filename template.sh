@@ -90,21 +90,24 @@ ARGS=(); EXPORTS=(); while test $# -gt 0; do
         -h|--help) OPT_MATCHED=$((OPT_MATCHED+1)); _help ;;
         -v|--version) OPT_MATCHED=$((OPT_MATCHED+1)); _version ;;
         methods) OPT_MATCHED=$((OPT_MATCHED+1)); _available-methods ;;
-        *)  # Where the Magic Happens!
-        if [ ${#SCRIPT_OPTS[@]} -gt 0 ]; then for OPT in ${SCRIPT_OPTS[@]}; do
+        *) # Where the Magic Happens!
+        if [ ${#SCRIPT_OPTS[@]} -gt 0 ]; then for OPT in ${SCRIPT_OPTS[@]}; do SUBOPTS=("${1}"); LAST_SUBOPT="${1}"
+        if [[ "${1}" =~ ^-[^-]{2,} ]]; then SUBOPTS=$(echo "${1}"|sed 's/-//'|grep -o .); LAST_SUBOPT="-${1: -1}"; fi
+        for SUBOPT in ${SUBOPTS[@]}; do SUBOPT="$(echo ${SUBOPT} | sed -E 's/^([^-]+)/-\1/')"
         OPT_MATCH=$(echo ${OPT} | grep -Eoh "^.*?:" | sed 's/://')
         OPT_KEY=$(echo ${OPT} | grep -Eoh ":.*?$" | sed 's/://')
         OPT_VARNAME="OPTS_${OPT_KEY}"
         if [ -z "${OPT_VARNAME}" ]; then echo "Invalid Option Definition, missing VARNAME: ${OPT}" 1>&2; exit 1; fi
-        if [[ ${1} =~ ^${OPT_MATCH}$ ]]; then
+        if [[ "${SUBOPT}" =~ ^${OPT_MATCH}$ ]]; then
             OPT_VAL="${OPT_VARNAME}"; OPT_MATCHED=$((OPT_MATCHED+1))
-            if [ -n "${2}" -a $# -gt 2 ] && [[ ! "${2}" =~ ^-+ ]]; then OPT_VAL="${2}"; shift; fi
+            if [[ "${SUBOPT}" =~ ^${LAST_SUBOPT}$ ]]; then
+            if [ -n "${2}" -a $# -gt 2 ] && [[ ! "${2}" =~ ^-+ ]]; then OPT_VAL="${2}"; shift; fi; fi
             if [ -n "${!OPT_VARNAME}" ]; then OPT_VAL="${!OPT_VARNAME};${OPT_VAL}"; fi
             declare "${OPT_VARNAME}=${OPT_VAL}"
             EXPORTS+=("${OPT_VARNAME}")
-            shift
-        fi; done; fi ;;
-    esac
+            if [[ "${SUBOPT}" =~ ^${LAST_SUBOPT}$ ]]; then shift; fi
+        fi; done; done; fi ;;
+    esac # Clean up unspecified flags and parse args
     if [ ${OPT_MATCHED} -eq 0 ]; then if [[ ${1} =~ ^-+ ]]; then
         if [ -n ${2} ] && [[ ! ${2} =~ ^-+ ]]; then shift; fi; shift
     else ARGS+=("${1}"); shift; fi; fi
