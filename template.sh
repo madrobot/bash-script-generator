@@ -15,6 +15,7 @@
 #
 # A complete example of this: (-d|--date):DATE
 SCRIPT_NAME="<ProvidedScriptName>"
+SCRIPT_FILE="${0}"
 SCRIPT_VER="1.0.0"
 SCRIPT_OPTS=("")
 SCRIPT_CATCHALL="no"   # Must be either "yes" or "no", enables a '_catchall' method executed when no command given
@@ -62,6 +63,21 @@ function _handle () {
     fi
 }
 
+# Generate Autocomplete Script
+function _generate-autocomplete () {
+    SCRIPT="$(echo ${SCRIPT_NAME} | sed -E 's/[ ]+/-/')"
+    ACS="function __ac-${SCRIPT}-prompt() {"
+    ACS+="local cur"
+    ACS+="COMPREPLY=()"
+    ACS+="cur=\${COMP_WORDS[COMP_CWORD]}"
+    ACS+="if [ \${COMP_CWORD} -eq 1 ]; then"
+    ACS+="    _script_commands=\$(${SCRIPT_FILE} methods)"
+    ACS+="    COMPREPLY=( \$(compgen -W \"\${_script_commands}\" -- \${cur}) )"
+    ACS+="fi; return 0"
+    ACS+="}; complete -F __ac-${SCRIPT}-prompt ${SCRIPT_FILE}"
+    printf "%s" "${ACS}"
+}
+
 #
 # User Implementation Begins
 #
@@ -90,6 +106,7 @@ ARGS=(); EXPORTS=(); while test $# -gt 0; do
         -h|--help) OPT_MATCHED=$((OPT_MATCHED+1)); _help ;;
         -v|--version) OPT_MATCHED=$((OPT_MATCHED+1)); _version ;;
         methods) OPT_MATCHED=$((OPT_MATCHED+1)); _available-methods ;;
+        generate-autocomplete) _generate-autocomplete ;;
         *) # Where the Magic Happens!
         if [ ${#SCRIPT_OPTS[@]} -gt 0 ]; then for OPT in ${SCRIPT_OPTS[@]}; do SUBOPTS=("${1}"); LAST_SUBOPT="${1}"
         if [[ "${1}" =~ ^-[^-]{2,} ]]; then SUBOPTS=$(echo "${1}"|sed 's/-//'|grep -o .); LAST_SUBOPT="-${1: -1}"; fi
