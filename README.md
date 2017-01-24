@@ -1,6 +1,6 @@
 ![Bash Script Generator](https://cloud.githubusercontent.com/assets/9037816/22258834/0b837816-e231-11e6-971f-f2dd9b940e21.png)
 # Bash Script Generator
-Generates a Bash Script Template that handles Arguments and Flags.
+Generates a Bash Script Template that handles Arguments and Flags Cleanly.
 
 This GitHub Repository can be found at [bit.ly/bash-script-generator](http://bit.ly/bash-script-generator), and is released under the GNU v3 License, so hack away as long as you keep it open-source.
 
