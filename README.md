@@ -69,14 +69,14 @@ This will only accept `yes` or `no` for a value, otherwise, it defaults to disab
 This script is equipped with an autocomplete helper method. Simply execute `<scriptname> generate-autocomplete` to generate an autocomplete script. This utilizes the `<scriptname> methods` method to get a list of all available methods/operations.
 
 ### Sourcing the Autocomplete Script
-For the autocomplete to function, you will need to source it into your bash session, best place to do this is in your `~/.profile` by simply including `source path/to/autocomplete/script` and restarting your bash session. You may also include it in `/etc/profile` to provide it all users, although not recommended unless you know what you're doing.
+For the autocomplete to function, you will need to source it into your bash session, best place to do this is in your `~/.profile` by simply including `source path/to/autocomplete/script` and restarting your bash session. You may also include it in `/etc/profile` to provide it to all users, although not recommended unless you know what you're doing.
 
 *Notice: For autocompletion to operate properly, you MUST NOT start your method names with an underscore (`_`) as they're considered internal methods and will be omitted from method list.*
 
 ## To Do List
 I'd like to see these implemented in the near future:
 
-- Accepting compounded flags like `-dp` as `-d` and `-p` separately
+- Customize generated script name, version, etc.
 
 ## License and Disclaimer
 This software is provided as-is and no warranties or guaranties are provided by the author. Use at your own risk. Distributed under the GNU v3 Open Source License.
