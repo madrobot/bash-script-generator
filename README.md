@@ -1,3 +1,4 @@
+![Bash Script Generator](https://bitbucket.org/repo/bGbbAq/images/1114187266-Bash-logotype-new.sh-small.png)
 # Bash Script Generator
 Generates a Bash Script Template that handles Arguments and Flags.
 
