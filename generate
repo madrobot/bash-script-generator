@@ -15,4 +15,4 @@ SCRIPT_TEMPLATE=$(curl -Ls http://bit.ly/bash-script-template)
 #...
 
 # Output the Template
-echo "${SCRIPT_TEMPLATE}"
+printf "%s" "${SCRIPT_TEMPLATE}"
