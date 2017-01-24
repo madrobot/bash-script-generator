@@ -26,6 +26,20 @@ To run the generator you simply execute the command below from your terminal:
 curl -Ls http://bit.ly/generate-bash-script | sh > ScriptFilename.sh
 ```
 
+Or to customize your generated script, execute this command instead:
+
+```
+curl -Ls http://bit.ly/generate-bash-script | sh -s -- -n ScriptName -v ScriptVer -c yes > ScriptFilename.sh
+```
+
+The generator script has the following options:
+
+- `-n|--name` for Script Name
+- `-v|--version` for Script Version
+- `-c|--catch-all` for Catch All toggle
+
+The output will be directed to `stdout` so you can easily forward the output to a file stream.
+
 ## Configuring the Generated Template
 There will be a few options for you to configure the generated template, below is the reference:
 
@@ -72,11 +86,6 @@ This script is equipped with an autocomplete helper method. Simply execute `<scr
 For the autocomplete to function, you will need to source it into your bash session, best place to do this is in your `~/.profile` by simply including `source path/to/autocomplete/script` and restarting your bash session. You may also include it in `/etc/profile` to provide it to all users, although not recommended unless you know what you're doing.
 
 *Notice: For autocompletion to operate properly, you MUST NOT start your method names with an underscore (`_`) as they're considered internal methods and will be omitted from method list.*
-
-## To Do List
-I'd like to see these implemented in the near future:
-
-- Customize generated script name, version, etc.
 
 ## License and Disclaimer
 This software is provided as-is and no warranties or guaranties are provided by the author. Use at your own risk. Distributed under the GNU v3 Open Source License.

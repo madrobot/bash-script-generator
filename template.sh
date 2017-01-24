@@ -21,9 +21,9 @@
 ##
 SCRIPT_NAME="<ProvidedScriptName>"
 SCRIPT_FILE="${0}"
-SCRIPT_VER="1.0.0"
+SCRIPT_VER="<ProvidedScriptVersion>"
 SCRIPT_OPTS=("")
-SCRIPT_CATCHALL="no"   # Must be either "yes" or "no", enables a '_catchall' method executed when no command given
+SCRIPT_CATCHALL="<ProvidedCatchAll>"   # Must be either "yes" or "no", enables a '_catchall' method executed when no command given
 
 # Print Usage for CLI
 function _help () {
