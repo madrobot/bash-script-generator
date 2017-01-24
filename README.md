@@ -8,7 +8,7 @@ This GitHub Repository can be found at [bit.ly/bash-script-generator](http://bit
 To run the generator you simply execute the command below from your terminal:
 
 ```
-curl -Ls http://bit.ly/generate-bash-script | sh --name ScriptName > ScriptFilename.sh
+curl -Ls http://bit.ly/generate-bash-script | sh > ScriptFilename.sh
 ```
 
 ## Configuring the Generated Template
