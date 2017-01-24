@@ -14,6 +14,11 @@
 # as OPTS_<varname>, i.e. OPTS_DATE
 #
 # A complete example of this: (-d|--date):DATE
+#
+# @author: Will Salemé <william.saleme@gmail.com>
+# @license: GNU v3
+# @date: March 12, 2016
+##
 SCRIPT_NAME="<ProvidedScriptName>"
 SCRIPT_FILE="${0}"
 SCRIPT_VER="1.0.0"
