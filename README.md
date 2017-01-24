@@ -60,5 +60,10 @@ For the autocomplete to function, you will need to source it into your bash sess
 
 *Notice: For autocompletion to operate properly, you MUST NOT start your method names with an underscore (`_`) as they're considered internal methods and will be omitted from method list.*
 
+## To Do List
+I'd like to see these implemented in the near future:
+
+- Accepting compounded flags like `-dp` as `-d` and `-p` separately
+
 ## License and Disclaimer
 This software is provided as-is and no warranties or guaranties are provided by the author. Use at your own risk. Distributed under the GNU v3 Open Source License.
