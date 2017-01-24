@@ -8,5 +8,11 @@
 # @date: January 24, 2016
 ##
 
+# Fetch the Bash Script Template
 SCRIPT_TEMPLATE=$(curl -Ls http://bit.ly/bash-script-template)
+
+# TODO: Replace tokens here to enable template customization
+#...
+
+# Output the Template
 echo "${SCRIPT_TEMPLATE}"
