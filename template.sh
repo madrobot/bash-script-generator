@@ -78,6 +78,7 @@ function _generate-autocomplete () {
     printf "%s" "${ACS}"
 }
 
+
 #
 # User Implementation Begins
 #
@@ -100,7 +101,8 @@ function some-method () {
 # Parses provided Script Options/Flags. It ensures to parse
 # all the options before routing to a metched method.
 #
-# `<script> methods` is used for auto completion scripts
+# `<script> generate-autocomplete` is used to generate autocomplete script
+# `<script> methods` is used as a helper for autocompletion scripts
 ARGS=(); EXPORTS=(); while test $# -gt 0; do
     OPT_MATCHED=0; case "${1}" in
         -h|--help) OPT_MATCHED=$((OPT_MATCHED+1)); _help ;;
