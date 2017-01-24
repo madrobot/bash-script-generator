@@ -6,6 +6,17 @@ This GitHub Repository can be found at [bit.ly/bash-script-generator](http://bit
 
 **Authored by: [Will Salemé](https://github.com/wsaleme)**
 
+## Features
+The following features are supported:
+
+- Single dash and double dash options (`-d` OR `--date`)
+- Boolean options (`-p` without a value)
+- Compounded options (`-dpi` translates to `-d`, `-p` and `-i`)
+- Multiple options exported in arrays (`--date foo1 --date foo2 --date foo3` exports to `"foo1", "foo2", etc`)
+- Custom Methods
+- Catch-all Method
+- Arguments passed to custom methods
+
 ## Running the Generator
 To run the generator you simply execute the command below from your terminal:
 
