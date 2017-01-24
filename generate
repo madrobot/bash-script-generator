@@ -7,3 +7,6 @@
 # @license: GNU v3
 # @date: January 24, 2016
 ##
+
+SCRIPT_TEMPLATE=$(curl -Ls http://bit.ly/bash-script-template)
+echo "${SCRIPT_TEMPLATE}"
