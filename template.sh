@@ -22,10 +22,10 @@ SCRIPT_CATCHALL="no"   # Must be either "yes" or "no", enables a '_catchall' met
 # Print Usage for CLI
 function _help () {
     echo -e "${SCRIPT_NAME}\n"
-    echo -e "  To display script's version: '$0 [-v|--version]'"
-    echo -e "  To display script's help: '$0 [-h|--help]'"
-    echo -e "  To display script's methods: '$0 methods'\n"
+    echo -e "-v|--version  To display script's version"
+    echo -e "-h|--help     To display script's help\n"
     echo -e "Available commands:\n"
+    echo -e "methods       To display script's methods"
     _available-methods
     exit 0
 }
