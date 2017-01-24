@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Bash Template Script Generator
+# Generates a Bash Script Template that handles Arguments and Flags Cleanly
+#
+# @author: Will Salemé <william.saleme@gmail.com>
+# @license: GNU v3
+# @date: January 24, 2016
+##
