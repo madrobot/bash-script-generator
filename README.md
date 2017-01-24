@@ -18,6 +18,7 @@ The following features are supported:
 - Parsed options are exported into `EXPORTS`
 - Parsed option values are exported to `OPTS_<varname>`
 - Parsed arguments are exported into `ARGS` also passed to custom methods as `${@}`
+- Autocompletion enabled with a generator method
 
 ## Running the Generator
 To run the generator you simply execute the command below from your terminal:
