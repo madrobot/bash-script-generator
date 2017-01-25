@@ -24,13 +24,13 @@ The following features are supported:
 To run the generator you simply execute the command below from your terminal:
 
 ```
-curl -Ls http://bit.ly/generate-bash-script | sh > ScriptFilename.sh
+curl -Ls http://bit.ly/generate-bash-script | bash > ScriptFilename.sh
 ```
 
 Or to customize your generated script, execute this command instead:
 
 ```
-curl -Ls http://bit.ly/generate-bash-script | sh -s -- -n ScriptName -v ScriptVer -c yes > ScriptFilename.sh
+curl -Ls http://bit.ly/generate-bash-script | bash -s -- -n ScriptName -v ScriptVer -c yes > ScriptFilename.sh
 ```
 
 The generator script has the following options:
