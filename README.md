@@ -12,7 +12,7 @@ The following features are supported:
 - Single dash and double dash options (`-d` OR `--date`)
 - Boolean options (`-p` without a value)
 - Compounded options (`-dpi` translates to `-d`, `-p` and `-i`)
-- Multiple options exported in arrays (`--date foo1 -d foo2 --date foo3` exports to `"foo1", "foo2", "foo3", etc`)
+- Multiple options exported in arrays (`--date foo1 -d foo2 --date foo3` exports to `"foo1", "foo2", "foo3"`)
 - Catch-all Method
 - Custom Methods
 - Parsed options are exported into `EXPORTS`
