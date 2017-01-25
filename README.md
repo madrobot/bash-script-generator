@@ -63,7 +63,7 @@ This is where you will configure the script options/flags. This is provided by a
 
 The `SCRIPT_OPTS` is an array who's values are as follows: `<regex>:<varname>`
 
-The first part before the colon is a standard Regex to match against the given options, i.e. `(-d|--date)` will match either `-d` or `--date` — you can append as many patterns as you want using the OR operator `|`.
+The first part before the colon is a standard Regex to match against the given options, i.e. `(-d|--date)` will match either `-d` or `--date` — you can append as many patterns as you want using the OR operator `|` and all of the patterns will be matched and mapped to the `<varname>`.
 
 The second part after the colon is the key used as the variable name. This name will be exported as `OPTS_<varname>`, i.e. `OPTS_DATE` in the case of a date option.
 
