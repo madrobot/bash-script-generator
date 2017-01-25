@@ -12,7 +12,7 @@ The following features are supported:
 - Single dash and double dash options (`-d` OR `--date`)
 - Boolean options (`-p` without a value)
 - Compounded options (`-dpi` translates to `-d`, `-p` and `-i`)
-- Multiple options exported in arrays (`--date foo1 -d foo2 --date foo3` exports to `"foo1", "foo2", etc`)
+- Multiple options exported in arrays (`--date foo1 -d foo2 --date foo3` exports to `"foo1", "foo2", "foo3", etc`)
 - Catch-all Method
 - Custom Methods
 - Parsed options are exported into `EXPORTS`
@@ -61,7 +61,7 @@ This is where you will configure the script options/flags. This is provided by a
 
 **Options Format:**
 
-The `SCRIPT_OPTS` is an array who's keys are as follows: `<regex>:<varname>`
+The `SCRIPT_OPTS` is an array who's values are as follows: `<regex>:<varname>`
 
 The first part before the colon is a standard Regex to match against the given options, i.e. `(-d|--date)` will match either `-d` or `--date` — you can append as many patterns as you want using the OR operator `|`.
 
