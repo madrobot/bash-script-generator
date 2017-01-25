@@ -46,7 +46,7 @@ function _available-methods () {
 
 # Dispatches CLI Methods
 function _handle () {
-    METHOD=$(_available-methods | grep -Eoh "^${1}\$")
+    METHOD=$(_available-methods 2>/dev/null | grep -Eoh "^${1}\$")
     if [ "x${METHOD}" != "x" ]; then ${METHOD} ${@:2}; exit 0
     else
         # Call a Catch-All method
@@ -58,7 +58,7 @@ function _handle () {
 
 # Generate Autocomplete Script
 function _generate-autocomplete () {
-    SCRIPT="$(echo ${SCRIPT_NAME} | sed -E 's/[ ]+/-/')"
+    SCRIPT="$(printf "%s" ${SCRIPT_NAME} | sed -E 's/[ ]+/-/')"
     ACS="function __ac-${SCRIPT}-prompt() {"
     ACS+="local cur"
     ACS+="COMPREPLY=()"
@@ -84,9 +84,9 @@ function _catchall () {
     if [ "${OPTS_CATCHALL}" != "yes" -a "${OPTS_CATCHALL}" != "no" ]; then OPTS_CATCHALL="no"; fi
 
     # Replace tokens here to enable template customization
-    SCRIPT_TEMPLATE=$(printf "%s" "${SCRIPT_TEMPLATE}" | sed 's/<ProvidedScriptName>/'${OPTS_NAME:-ScriptName}'/g')
-    SCRIPT_TEMPLATE=$(printf "%s" "${SCRIPT_TEMPLATE}" | sed 's/<ProvidedScriptVersion>/'${OPTS_VERSION:-1.0.0}'/g')
-    SCRIPT_TEMPLATE=$(printf "%s" "${SCRIPT_TEMPLATE}" | sed 's/<ProvidedCatchAll>/'${OPTS_CATCHALL:-no}'/g')
+    SCRIPT_TEMPLATE=$(printf "%s" "${SCRIPT_TEMPLATE}" | sed 's/<ProvidedScriptName>/'"${OPTS_NAME:-ScriptName}"'/g')
+    SCRIPT_TEMPLATE=$(printf "%s" "${SCRIPT_TEMPLATE}" | sed 's/<ProvidedScriptVersion>/'"${OPTS_VERSION:-1.0.0}"'/g')
+    SCRIPT_TEMPLATE=$(printf "%s" "${SCRIPT_TEMPLATE}" | sed 's/<ProvidedCatchAll>/'"${OPTS_CATCHALL:-no}"'/g')
 
     # Output the Template
     printf "%s" "${SCRIPT_TEMPLATE}"
@@ -112,16 +112,16 @@ ARGS=(); EXPORTS=(); while test $# -gt 0; do
         generate-autocomplete) _generate-autocomplete ;;
         *) # Where the Magic Happens!
         if [ ${#SCRIPT_OPTS[@]} -gt 0 ]; then for OPT in ${SCRIPT_OPTS[@]}; do SUBOPTS=("${1}"); LAST_SUBOPT="${1}"
-        if [[ "${1}" =~ ^-[^-]{2,} ]]; then SUBOPTS=$(echo "${1}"|sed 's/-//'|grep -o .); LAST_SUBOPT="-${1: -1}"; fi
-        for SUBOPT in ${SUBOPTS[@]}; do SUBOPT="$(echo ${SUBOPT} | sed -E 's/^([^-]+)/-\1/')"
-        OPT_MATCH=$(echo ${OPT} | grep -Eoh "^.*?:" | sed 's/://')
-        OPT_KEY=$(echo ${OPT} | grep -Eoh ":.*?$" | sed 's/://')
+        if [[ "${1}" =~ ^-[^-]{2,} ]]; then SUBOPTS=$(printf "%s" "${1}"|sed 's/-//'|grep -o .); LAST_SUBOPT="-${1: -1}"; fi
+        for SUBOPT in ${SUBOPTS[@]}; do SUBOPT="$(printf "%s" ${SUBOPT} | sed -E 's/^([^-]+)/-\1/')"
+        OPT_MATCH=$(printf "%s" ${OPT} | grep -Eoh "^.*?:" | sed 's/://')
+        OPT_KEY=$(printf "%s" ${OPT} | grep -Eoh ":.*?$" | sed 's/://')
         OPT_VARNAME="OPTS_${OPT_KEY}"
         if [ -z "${OPT_VARNAME}" ]; then echo "Invalid Option Definition, missing VARNAME: ${OPT}" 1>&2; exit 1; fi
         if [[ "${SUBOPT}" =~ ^${OPT_MATCH}$ ]]; then
             OPT_VAL="${OPT_VARNAME}"; OPT_MATCHED=$((OPT_MATCHED+1))
             if [[ "${SUBOPT}" =~ ^${LAST_SUBOPT}$ ]]; then
-            if [ -n "${2}" -a $# -gt 2 ] && [[ ! "${2}" =~ ^-+ ]]; then OPT_VAL="${2}"; shift; fi; fi
+            if [ -n "${2}" -a $# -ge 2 ] && [[ ! "${2}" =~ ^-+ ]]; then OPT_VAL="${2}"; shift; fi; fi
             if [ -n "${!OPT_VARNAME}" ]; then OPT_VAL="${!OPT_VARNAME};${OPT_VAL}"; fi
             declare "${OPT_VARNAME}=${OPT_VAL}"
             EXPORTS+=("${OPT_VARNAME}")
