@@ -81,7 +81,7 @@ This will enable/disable the catch all method. Normally, you'd have to specify a
 This will only accept `yes` or `no` for a value, otherwise, it defaults to disabling the Catch-All Method.
 
 ## Script Autocompletion
-This script is equipped with an autocomplete helper method. Simply execute `<scriptname> generate-autocomplete` to generate an autocomplete script. This utilizes the `<scriptname> methods` method to get a list of all available methods/operations.
+This script is equipped with an autocomplete helper method. Simply execute `<scriptname> generate-autocomplete` to generate an autocomplete script. This utilizes the `<scriptname> methods` method to get a dynamic list of all available methods/operations, this is done automatically and will update the list of methods as you add more method definitions.
 
 ### Sourcing the Autocomplete Script
 For the autocomplete to function, you will need to source it into your bash session, best place to do this is in your `~/.profile` by simply including `source path/to/autocomplete/script` and restarting your bash session. You may also include it in `/etc/profile` to provide it to all users, although not recommended unless you know what you're doing.
