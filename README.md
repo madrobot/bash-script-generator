@@ -4,7 +4,7 @@ Generates a Bash Script Template that handles Arguments and Flags Cleanly.
 
 This GitHub Repository is released under the GNU v3 License, so hack away as long as you keep it open-source. To access the generator script directly, a convenient short link is provided: [bit.ly/gen-bash-script](http://bit.ly/gen-bash-script).
 
-**Authored by: [Will Salemé](https://github.com/wsaleme)**
+**Authored by: [Mad Robot](https://github.com/madrobot)**
 
 ## Features
 The following features are supported:
