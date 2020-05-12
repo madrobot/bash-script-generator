@@ -3,7 +3,7 @@
 # Bash Template Script Generator
 # Generates a Bash Script Template that handles Arguments and Flags Cleanly
 #
-# @author: Will Salemé <william.saleme@gmail.com>
+# @author: Mad Robot
 # @license: GNU v3
 # @date: March 12, 2016
 ##
