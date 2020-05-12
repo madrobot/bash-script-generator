@@ -2,7 +2,7 @@
 # Bash Script Generator
 Generates a Bash Script Template that handles Arguments and Flags Cleanly.
 
-This GitHub Repository can be found at [bit.ly/bash-script-generator](http://bit.ly/bash-script-generator), and is released under the GNU v3 License, so hack away as long as you keep it open-source. To access the generator script directly, a convenient short link is provided: [bit.ly/generate-bash-script](http://bit.ly/generate-bash-script).
+This GitHub Repository is released under the GNU v3 License, so hack away as long as you keep it open-source. To access the generator script directly, a convenient short link is provided: [bit.ly/gen-bash-script](http://bit.ly/gen-bash-script).
 
 **Authored by: [Will Salemé](https://github.com/wsaleme)**
 
@@ -24,13 +24,13 @@ The following features are supported:
 To run the generator you simply execute the command below from your terminal:
 
 ```
-curl -Ls http://bit.ly/generate-bash-script | bash > ScriptFilename.sh
+curl -Ls http://bit.ly/gen-bash-script | bash > ScriptFilename.sh
 ```
 
 Or to customize your generated script, execute this command instead:
 
 ```
-curl -Ls http://bit.ly/generate-bash-script | bash -s -- -n ScriptName -v ScriptVer -c yes > ScriptFilename.sh
+curl -Ls http://bit.ly/gen-bash-script | bash -s -- -n ScriptName -v ScriptVer -c yes > ScriptFilename.sh
 ```
 
 The generator script has the following options:
