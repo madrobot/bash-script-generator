@@ -15,7 +15,7 @@
 #
 # A complete example of this: (-d|--date):DATE
 #
-# @author: Will Salemé <william.saleme@gmail.com>
+# @author: Mad Robot
 # @license: GNU v3
 # @date: March 12, 2016
 ##
